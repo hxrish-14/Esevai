@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" translate="yes">
+<head>
+  <meta charset="UTF-8">
+  <title>Services | Esevai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="translate">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/form.js"></script>
+</head>
+<body oncontextmenu="return false">
+
+<div id="loader"><div class="smooth-loader"></div></div>
+
+<header>
+  <div class="header-inner">
+    <div class="brand-title">ESEVAI SERVICES</div>
+
+    <nav>
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="services.html" class="nav-btn active">Services</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="#" class="nav-btn card-btn">Download Card</a>
+
+      <select id="langSelect" class="lang-select">
+        <option value="en">English</option>
+        <option value="ta">தமிழ்</option>
+      </select>
+
+      <div class="theme-switch">
+        <input type="checkbox" id="themeToggle">
+        <label for="themeToggle" class="switch">
+          <span class="sun">☀</span>
+          <span class="moon">🌙</span>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+<section class="form-section">
+  <div class="form-card">
+    <h2>Fill Out</h2>
+
+    <form id="serviceForm">
+
+      <div class="input-group">
+        <input type="text" id="fullName" name="fullName"
+               placeholder="Full Name (As Per Aadhaar)" required>
+        <small class="error" id="nameError"></small>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="mobile" name="mobile"
+               placeholder="Mobile Number" required>
+        <small class="error" id="mobileError"></small>
+      </div>
+
+      <div class="input-group">
+        <input type="email" id="email" name="email"
+               placeholder="Email Address" required>
+        <small class="error" id="emailError"></small>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="aadhaar" name="aadhaar"
+               placeholder="Aadhaar Number" required>
+        <small class="error" id="aadhaarError"></small>
+      </div>
+
+      <select name="documentType" id="documentType" required>
+        <option value="">Select Document</option>
+        <option value="Aadhaar">AADHAAR</option>
+        <option value="PAN">PAN</option>
+        <option value="Voter ID">VOTER ID</option>
+        <option value="Driving License">DRIVING LICENSE</option>
+        <option value="Ration Card">RATION CARD</option>
+      </select>
+
+      <select name="serviceType" id="serviceType" required>
+        <option value="">Select Service</option>
+      </select>
+
+      <div id="fileUploads" class="file-box"></div>
+
+      <div class="fee-display">
+        Total Fee: <strong id="feeAmount">₹0</strong>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- PAYMENT MODAL -->
+<div id="paymentModal" class="modal">
+  <div class="modal-content">
+    <h3>Confirm Payment</h3>
+    <p>Total Payable: <strong id="modalFee">₹0</strong></p>
+    <img src="assets/GPAY QR.png" class="qr-img">
+    <p>Send Payment Screenshot To <strong>9655096127</strong></p>
+    <div class="modal-actions">
+      <button id="proceedBtn" class="btn-rect">Proceed</button>
+      <button id="cancelBtn" class="btn-rect cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div id="successModal" class="modal">
+  <div class="modal-content">
+    <h3>Submitted Successfully</h3>
+    <p>You Will Be Contacted Soon</p>
+    <button id="successOkBtn" class="btn-rect success">OK</button>
+  </div>
+</div>
+
+<footer><p>By Harish ♡</p></footer>
+
+</body>
+</html>

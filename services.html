@@ -2,27 +2,31 @@
 <html lang="en" translate="yes">
 <head>
   <meta charset="UTF-8">
-  <title>Services | Esevai</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | ESEVAI</title>
+  <link rel="icon" type="image/png" href="assets/LOGO.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="google" content="translate">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script defer src="assets/js/main.js"></script>
   <script defer src="assets/js/form.js"></script>
 </head>
+
 <body oncontextmenu="return false">
 
 <div id="loader"><div class="smooth-loader"></div></div>
 
 <header>
   <div class="header-inner">
-    <div class="brand-title">ESEVAI SERVICES</div>
+    <a href="index.html" class="brand-title">ESEVAI SERVICES</a>
 
     <nav>
       <a href="index.html" class="nav-btn">Home</a>
       <a href="services.html" class="nav-btn active">Services</a>
       <a href="contact.html" class="nav-btn">Contact</a>
       <a href="about.html" class="nav-btn">About</a>
-      <a href="#" class="nav-btn card-btn">Download Card</a>
+      <a href="https://raw.githubusercontent.com/hxrish-14/Esevai/refs/heads/main/assets/CARD.png"
+         target="_blank"
+         class="nav-btn card-btn">Card</a>
 
       <select id="langSelect" class="lang-select">
         <option value="en">English</option>
@@ -45,35 +49,31 @@
 
 <section class="form-section">
   <div class="form-card">
-    <h2>Fill Out</h2>
+    <h2 class="form-title">Fill Out</h2>
 
     <form id="serviceForm">
 
       <div class="input-group">
-        <input type="text" id="fullName" name="fullName"
-               placeholder="Full Name (As Per Aadhaar)" required>
+        <input type="text" id="fullName" placeholder="Full Name (As Per Aadhaar)" required>
         <small class="error" id="nameError"></small>
       </div>
 
       <div class="input-group">
-        <input type="text" id="mobile" name="mobile"
-               placeholder="Mobile Number" required>
+        <input type="text" id="mobile" placeholder="Mobile Number" required>
         <small class="error" id="mobileError"></small>
       </div>
 
       <div class="input-group">
-        <input type="email" id="email" name="email"
-               placeholder="Email Address" required>
+        <input type="email" id="email" placeholder="Email Address" required>
         <small class="error" id="emailError"></small>
       </div>
 
       <div class="input-group">
-        <input type="text" id="aadhaar" name="aadhaar"
-               placeholder="Aadhaar Number" required>
+        <input type="text" id="aadhaar" placeholder="Aadhaar Number" required>
         <small class="error" id="aadhaarError"></small>
       </div>
 
-      <select name="documentType" id="documentType" required>
+      <select id="documentType" required>
         <option value="">Select Document</option>
         <option value="Aadhaar">AADHAAR</option>
         <option value="PAN">PAN</option>
@@ -82,7 +82,7 @@
         <option value="Ration Card">RATION CARD</option>
       </select>
 
-      <select name="serviceType" id="serviceType" required>
+      <select id="serviceType" required>
         <option value="">Select Service</option>
       </select>
 
@@ -116,7 +116,7 @@
 
 <!-- SUCCESS MODAL -->
 <div id="successModal" class="modal">
-  <div class="modal-content">
+  <div class="modal-content success-box">
     <h3>Submitted Successfully</h3>
     <p>You Will Be Contacted Soon</p>
     <button id="successOkBtn" class="btn-rect success">OK</button>

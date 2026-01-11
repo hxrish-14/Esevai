@@ -2,36 +2,39 @@
 <html lang="en" translate="yes">
 <head>
   <meta charset="UTF-8">
-  <title>eSevai Services</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESEVAI SERVICES</title>
+  <link rel="icon" type="image/png" href="assets/LOGO.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="google" content="translate">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script defer src="assets/js/main.js"></script>
 </head>
+
 <body oncontextmenu="return false">
 
 <div id="loader"><div class="smooth-loader"></div></div>
 
 <header>
   <div class="header-inner">
-    <div class="brand-title">ESEVAI SERVICES</div>
+    <a href="index.html" class="brand-title">ESEVAI SERVICES</a>
 
     <nav>
       <a href="index.html" class="nav-btn active">Home</a>
       <a href="services.html" class="nav-btn">Services</a>
       <a href="contact.html" class="nav-btn">Contact</a>
       <a href="about.html" class="nav-btn">About</a>
-      <a href="#" class="nav-btn card-btn">Download Card</a>
+      <a href="https://raw.githubusercontent.com/hxrish-14/Esevai/refs/heads/main/assets/CARD.png"
+         target="_blank"
+         class="nav-btn card-btn">Card</a>
 
-      <!-- Browser / Google Translate Enabled -->
-      <select id="langSelect" class="lang-select">
+      <select id="langSelect" class="lang-select" aria-label="Language Selector">
         <option value="en">English</option>
         <option value="ta">தமிழ்</option>
       </select>
 
       <div class="theme-switch">
         <input type="checkbox" id="themeToggle">
-        <label for="themeToggle" class="switch">
+        <label for="themeToggle" class="switch" aria-label="Theme Toggle">
           <span class="sun">☀</span>
           <span class="moon">🌙</span>
           <span class="slider"></span>
@@ -46,6 +49,7 @@
 <section class="hero">
   <div class="hero-text">
     <h1>Welcome To Esevai Services</h1>
+
     <p>
       Esevai Services, Created By Harish, Is Your Trusted Digital Service Center For Government
       Document Assistance. We Provide Paid Services To Help You Apply, Update, And Reprint
@@ -70,19 +74,17 @@
     </ul>
 
     <p class="note">
-      <strong>Important Note:</strong> Esevai Services Is A Private Service Provider And Is Not
-      Affiliated With Any Government Department. Final Approval Depends On The Respective Authorities.
+      <strong>Important Note:</strong>
+      Esevai Services Is A Private Service Provider And Is Not Affiliated With Any Government
+      Department. Final Approval Depends On The Respective Authorities.
     </p>
-
-    <button class="cta-btn" onclick="location.href='services.html'">Get Your Services</button>
   </div>
 
-  <!-- 1:1 HERO IMAGE -->
+  <!-- HERO IMAGE -->
   <div class="hero-media">
-    <div class="hero-image"
-         style="background-image:url('assets/HERO IMAGE.png')"></div>
+    <div class="hero-image" style="background-image:url('assets/HERO IMAGE.png')"></div>
 
-    <!-- LOOP DIRECTLY BELOW IMAGE, SAME WIDTH -->
+    <!-- TEXT LOOP UNDER IMAGE -->
     <div class="image-marquee">
       <div class="marquee-track">
         <span>AADHAAR</span>
@@ -96,6 +98,11 @@
         <span>RATION CARD</span>
         <span>DRIVING LICENSE</span>
       </div>
+    </div>
+
+    <!-- CTA MOVED BELOW LOOP -->
+    <div class="hero-cta">
+      <button class="cta-btn" onclick="location.href='services.html'">Get Started</button>
     </div>
   </div>
 </section>

@@ -1,11 +1,11 @@
-/* =========================================
-   GLOBAL UI & PAGE ANIMATIONS
-========================================= */
+/* ==========================================================
+   GLOBAL UI, ANIMATIONS, THEME, LANGUAGE, SECURITY
+========================================================== */
 
 // Disable right click
 document.addEventListener("contextmenu", e => e.preventDefault());
 
-// Basic dev-tools key blocking
+// Basic DevTools key blocking
 document.addEventListener("keydown", e => {
   if (
     e.key === "F12" ||
@@ -18,31 +18,36 @@ document.addEventListener("keydown", e => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ============================
+  /* ==============================
      LOADER
-  ============================ */
+  ============================== */
   const loader = document.getElementById("loader");
   setTimeout(() => {
-    if (loader) loader.style.display = "none";
-  }, 1000);
+    if (loader) loader.style.opacity = "0";
+    setTimeout(() => {
+      if (loader) loader.style.display = "none";
+    }, 400);
+  }, 900);
 
-  /* ============================
-     PAGE FADE + BOUNCE
-  ============================ */
+  /* ==============================
+     PAGE FADE IN + MOTION BLUR
+  ============================== */
   const page = document.querySelector(".page");
   if (page) {
     page.style.opacity = "0";
-    page.style.transform = "scale(0.97)";
+    page.style.transform = "translateY(12px) scale(0.98)";
+    page.style.filter = "blur(8px)";
     setTimeout(() => {
       page.style.transition = "all 0.9s ease";
       page.style.opacity = "1";
-      page.style.transform = "scale(1)";
-    }, 150);
+      page.style.transform = "translateY(0) scale(1)";
+      page.style.filter = "blur(0)";
+    }, 120);
   }
 
-  /* ============================
+  /* ==============================
      SMOOTH SCROLL
-  ============================ */
+  ============================== */
   document.querySelectorAll("a[href^='#']").forEach(anchor => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
@@ -53,18 +58,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ============================
-     THEME TOGGLE
-  ============================ */
+  /* ==============================
+     THEME TOGGLE (GLITCH-FREE)
+  ============================== */
   const toggle = document.getElementById("themeToggle");
-  const savedTheme = localStorage.getItem("theme");
+  let isToggling = false;
 
+  const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
     document.documentElement.setAttribute("data-theme", "dark");
     if (toggle) toggle.checked = true;
   }
 
   toggle?.addEventListener("change", () => {
+    if (isToggling) return;
+    isToggling = true;
+
     if (toggle.checked) {
       document.documentElement.setAttribute("data-theme", "dark");
       localStorage.setItem("theme", "dark");
@@ -72,15 +81,15 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.removeAttribute("data-theme");
       localStorage.setItem("theme", "light");
     }
+
+    setTimeout(() => { isToggling = false; }, 300);
   });
 
-  /* ============================
+  /* ==============================
      LANGUAGE DROPDOWN
-     (Browser / Google Translate)
-  ============================ */
+  ============================== */
   const langSelect = document.getElementById("langSelect");
   langSelect?.addEventListener("change", () => {
-    // Allow browser / Google Translate to translate page
     document.documentElement.setAttribute("lang", langSelect.value);
   });
 

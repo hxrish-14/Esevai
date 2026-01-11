@@ -1,38 +1,35 @@
-/* =========================
-   ROOT COLOR PALETTE
-========================= */
+/* =========================================================
+   ROOT THEME VARIABLES
+========================================================= */
 :root {
-  --bg: #eaf3ff;
-  --text: #081a33;
+  --bg: #eef4ff;
+  --text: #0a1220;
   --card: #ffffff;
   --primary: #0b5ed7;
-  --secondary: #081a33;
   --accent: #00b4ff;
-  --green: #28d17c;
-  --shadow: rgba(11, 94, 215, 0.35);
-  --border-soft: rgba(11, 94, 215, 0.2);
-  --muted: #5f6f86;
+  --green: #22d48a;
+  --black: #0a1220;
+  --white: #ffffff;
+  --shadow: rgba(11, 94, 215, 0.25);
+  --muted: #5c6a80;
 }
 
-/* =========================
-   DARK MODE (OLED/LCD SAFE)
-========================= */
 [data-theme="dark"] {
   --bg: #05070c;
   --text: #f1f5fb;
   --card: #0b0f1a;
   --primary: #2f81f7;
-  --secondary: #f1f5fb;
   --accent: #00b4ff;
   --green: #2aff7d;
-  --shadow: rgba(0, 180, 255, 0.45);
-  --border-soft: rgba(0, 180, 255, 0.25);
+  --black: #f1f5fb;
+  --white: #05070c;
+  --shadow: rgba(0, 180, 255, 0.4);
   --muted: #9aa4b2;
 }
 
-/* =========================
+/* =========================================================
    GLOBAL RESET
-========================= */
+========================================================= */
 * {
   margin: 0;
   padding: 0;
@@ -53,11 +50,11 @@ body {
   transition: background 0.6s ease, color 0.6s ease;
 }
 
-/* =========================
-   PAGE ANIMATIONS
-========================= */
+/* =========================================================
+   PAGE MOTION
+========================================================= */
 .page {
-  animation: fadeIn 0.9s ease, bounceIn 0.9s ease;
+  animation: fadeIn 0.8s ease, bounceIn 0.8s ease;
 }
 
 @keyframes fadeIn {
@@ -66,14 +63,14 @@ body {
 }
 
 @keyframes bounceIn {
-  0% { transform: scale(0.94); }
+  0% { transform: scale(0.95); }
   60% { transform: scale(1.04); }
   100% { transform: scale(1); }
 }
 
-/* =========================
-   LOADER (GREEN)
-========================= */
+/* =========================================================
+   LOADER
+========================================================= */
 #loader {
   position: fixed;
   inset: 0;
@@ -88,81 +85,90 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 4px solid var(--border-soft);
+  border: 4px solid rgba(0,0,0,0.1);
   border-top: 4px solid var(--green);
-  animation: spinSmooth 1.3s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+  animation: spin 1.2s cubic-bezier(.68,-0.55,.27,1.55) infinite;
 }
 
-@keyframes spinSmooth {
+@keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 header {
   background: var(--card);
-  border-bottom: 1px solid var(--border-soft);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   position: sticky;
   top: 0;
   z-index: 1000;
+  backdrop-filter: blur(6px);
 }
 
 .header-inner {
   max-width: 1300px;
   margin: auto;
-  padding: 14px 24px;
+  padding: 14px 22px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .brand-title {
-  font-size: 2.1rem;
+  font-size: 2rem;
   font-weight: 900;
-  letter-spacing: 1px;
-  color: var(--secondary);
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.3s ease;
 }
 
-/* =========================
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 nav {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
-/* BUTTONS */
+/* Header Buttons: Black/White → Green Hover */
 .nav-btn {
   padding: 10px 22px;
   text-decoration: none;
-  color: #fff;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  border: none;
-  border-radius: 8px;
   font-weight: 600;
-  font-size: 0.95rem;
+  border-radius: 8px;
+  background: var(--black);
+  color: var(--white);
   transition: all 0.35s ease;
-  box-shadow: 0 6px 20px var(--shadow);
+  box-shadow: 0 4px 16px var(--shadow);
 }
 
 .nav-btn:hover {
+  background: var(--green);
+  color: #042b17;
   transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 12px 32px var(--shadow);
+  box-shadow: 0 10px 30px rgba(42,255,125,0.45);
 }
 
 .nav-btn.active {
-  background: linear-gradient(135deg, #093c9f, #00b4ff);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
 }
 
+/* Card Button */
 .card-btn {
-  background: linear-gradient(135deg, #020b24, #0b5ed7);
+  background: linear-gradient(135deg, #444, #aaa);
+  color: #fff;
 }
 
-/* =========================
+.card-btn:hover {
+  background: var(--green);
+  color: #042b17;
+}
+
+/* =========================================================
    LANGUAGE DROPDOWN
-========================= */
+========================================================= */
 .lang-select {
   padding: 9px 14px;
   border-radius: 8px;
@@ -170,41 +176,51 @@ nav {
   background: var(--card);
   color: var(--text);
   font-weight: 600;
-  box-shadow: 0 4px 12px var(--shadow);
   cursor: pointer;
+  box-shadow: 0 4px 14px var(--shadow);
 }
 
-/* =========================
+.lang-select option {
+  background: var(--card);
+  color: var(--text);
+}
+
+/* Fix Dark Mode Dropdown */
+[data-theme="dark"] .lang-select {
+  background: #0b0f1a;
+  color: #f1f5fb;
+}
+
+[data-theme="dark"] .lang-select option {
+  background: #0b0f1a;
+  color: #f1f5fb;
+}
+
+/* =========================================================
    THEME TOGGLE
-========================= */
+========================================================= */
 .theme-switch {
-  margin-left: 10px;
+  margin-left: 12px;
 }
 
 .switch {
   position: relative;
-  width: 66px;
-  height: 32px;
+  width: 64px;
+  height: 30px;
   background: linear-gradient(135deg, #cfd9ff, #a9c1ff);
   border-radius: 30px;
   cursor: pointer;
+  padding: 0 6px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 6px;
-  transition: background 0.5s ease;
-}
-
-.switch .sun,
-.switch .moon {
-  font-size: 14px;
-  z-index: 2;
+  transition: background 0.4s ease;
 }
 
 .switch .slider {
   position: absolute;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   background: white;
   border-radius: 50%;
   left: 3px;
@@ -221,45 +237,44 @@ input:checked + .switch .slider {
   transform: translateX(34px);
 }
 
-/* =========================
+/* =========================================================
    HERO SECTION
-========================= */
+========================================================= */
 .hero {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 80px 24px;
   max-width: 1300px;
   margin: auto;
+  padding: 80px 22px;
   gap: 40px;
 }
 
 .hero-text {
-  max-width: 600px;
+  max-width: 620px;
 }
 
 .hero-text h1 {
   font-size: 3rem;
-  margin-bottom: 16px;
-  color: var(--secondary);
+  margin-bottom: 14px;
 }
 
 .hero-text p {
   color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 18px;
+  line-height: 1.7;
+  margin-bottom: 16px;
 }
 
 .hero-text ul {
-  margin: 12px 0 20px 20px;
+  margin: 12px 0 16px 18px;
 }
 
-.hero-text ul li {
-  margin-bottom: 8px;
+.hero-text li {
+  margin-bottom: 6px;
 }
 
 .note {
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 /* CTA */
@@ -276,15 +291,15 @@ input:checked + .switch .slider {
 }
 
 .cta-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 14px 40px rgba(40,209,124,0.6);
+  transform: scale(1.06);
+  box-shadow: 0 16px 45px rgba(40,209,124,0.6);
 }
 
-/* =========================
+/* =========================================================
    HERO MEDIA (1:1 IMAGE)
-========================= */
+========================================================= */
 .hero-media {
-  width: 420px;
+  width: 440px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -296,12 +311,20 @@ input:checked + .switch .slider {
   border-radius: 16px;
   background-size: cover;
   background-position: center;
-  box-shadow: 0 0 50px var(--shadow);
+  box-shadow: 0 0 60px var(--shadow);
+  transition: transform 0.6s ease, box-shadow 0.6s ease, filter 0.6s ease;
 }
 
-/* =========================
-   IMAGE MARQUEE (UNDER IMAGE)
-========================= */
+/* Hover effect on image */
+.hero-image:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 90px rgba(0,180,255,0.5);
+  filter: brightness(1.05);
+}
+
+/* =========================================================
+   MARQUEE UNDER IMAGE
+========================================================= */
 .image-marquee {
   width: 100%;
   overflow: hidden;
@@ -315,25 +338,29 @@ input:checked + .switch .slider {
   display: flex;
   gap: 40px;
   padding: 10px 0;
-  animation: marqueeLoop 10s linear infinite;
+  animation: marquee 10s linear infinite;
 }
 
 .marquee-track span {
   font-weight: 700;
   white-space: nowrap;
-  color: var(--secondary);
 }
 
-@keyframes marqueeLoop {
+@keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
-/* =========================
-   FORM SECTION
-========================= */
+/* CTA BELOW IMAGE */
+.hero-cta {
+  margin-top: 16px;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
 .form-section {
-  padding: 70px 24px;
+  padding: 70px 22px;
 }
 
 .form-card {
@@ -342,17 +369,17 @@ input:checked + .switch .slider {
   background: var(--card);
   padding: 36px;
   border-radius: 16px;
-  box-shadow: 0 0 60px rgba(11,94,215,0.15);
+  box-shadow: 0 0 60px var(--shadow);
 }
 
-.form-card h2 {
+.form-title {
   text-align: center;
-  margin-bottom: 22px;
-  color: var(--secondary);
+  font-size: 1.8rem;
+  margin-bottom: 24px;
 }
 
 .input-group {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .input-group small {
@@ -360,21 +387,16 @@ input:checked + .switch .slider {
   font-size: 0.75rem;
 }
 
-/* INPUTS */
+/* Inputs */
 .form-card input,
 .form-card select {
   width: 100%;
   padding: 13px;
   border-radius: 8px;
   border: none;
-  background: rgba(11,94,215,0.05);
+  background: rgba(11,94,215,0.06);
   color: var(--text);
   transition: box-shadow 0.3s ease, background 0.3s ease;
-}
-
-[data-theme="dark"] .form-card input,
-[data-theme="dark"] .form-card select {
-  background: rgba(0,180,255,0.08);
 }
 
 .form-card input:focus,
@@ -384,26 +406,21 @@ input:checked + .switch .slider {
   box-shadow: 0 0 10px var(--shadow);
 }
 
-/* FILE UPLOAD */
-.file-box {
-  animation: fadeIn 0.6s ease;
-}
-
+/* File labels */
 .file-box label {
   display: block;
   margin-bottom: 4px;
   font-weight: 600;
 }
 
-/* FEE */
+/* Fee */
 .fee-display {
   text-align: center;
   margin: 16px 0;
   font-weight: 700;
-  color: var(--secondary);
 }
 
-/* SUBMIT */
+/* Submit */
 .submit-btn {
   background: linear-gradient(135deg, var(--green), #7dffb3);
   border: none;
@@ -412,19 +429,17 @@ input:checked + .switch .slider {
   border-radius: 40px;
   cursor: pointer;
   font-weight: 700;
-  color: #042b17;
   transition: all 0.4s ease;
-  box-shadow: 0 8px 24px rgba(42,255,125,0.4);
+  box-shadow: 0 10px 30px rgba(42,255,125,0.45);
 }
 
 .submit-btn:hover {
-  transform: scale(1.04);
-  box-shadow: 0 12px 36px rgba(42,255,125,0.55);
+  transform: scale(1.05);
 }
 
-/* =========================
+/* =========================================================
    MODALS + BLUR
-========================= */
+========================================================= */
 body.blur main,
 body.blur header,
 body.blur footer {
@@ -466,15 +481,15 @@ body.blur footer {
   padding: 10px 22px;
   border: none;
   border-radius: 6px;
-  background: var(--primary);
-  color: #fff;
+  background: var(--black);
+  color: var(--white);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .btn-rect:hover {
   background: var(--green);
-  color: #052b1a;
+  color: #042b17;
 }
 
 .btn-rect.cancel:hover {
@@ -484,55 +499,43 @@ body.blur footer {
 
 .btn-rect.success {
   background: var(--green);
-  color: #052b1a;
+  color: #042b17;
 }
 
-/* =========================
-   INFO / CONTACT
-========================= */
+/* =========================================================
+   INFO / CONTACT / ABOUT
+========================================================= */
 .info-card {
-  max-width: 700px;
-  margin: 90px auto;
+  max-width: 900px;
+  margin: 80px auto;
   background: var(--card);
   padding: 40px;
   border-radius: 10px;
-  text-align: left;
-  box-shadow: 0 0 60px rgba(11,94,215,0.15);
+  box-shadow: 0 0 60px var(--shadow);
 }
 
-/* RECTANGULAR ABOUT BOX */
-.rect-box {
-  border-radius: 6px;
+.full-rect {
+  width: 100%;
 }
 
 .contact-big {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   text-align: center;
 }
 
-.info-card p {
-  margin: 10px 0;
-  color: var(--text);
-}
-
-.info-card ul {
-  margin-left: 20px;
-}
-
-.info-card ul li {
-  margin-bottom: 6px;
-}
-
-/* REMOVE LINK BLUE */
 .info-card a {
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
 }
 
-/* =========================
+.info-card a:hover {
+  color: var(--primary);
+}
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 footer {
   position: fixed;
   bottom: 0;
@@ -542,14 +545,14 @@ footer {
   justify-content: center;
   align-items: center;
   background: var(--card);
-  border-top: 1px solid var(--border-soft);
+  border-top: 1px solid rgba(0,0,0,0.08);
   font-size: 0.85rem;
   color: var(--muted);
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* =========================================================
+   RESPONSIVE VIEWPORT
+========================================================= */
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
@@ -560,13 +563,12 @@ footer {
     width: 100%;
   }
 
-  .hero-image {
-    width: 100%;
-  }
-
   nav {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+  }
+
+  .brand-title {
+    font-size: 1.6rem;
   }
 }
